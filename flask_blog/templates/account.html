@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% block content %}
+	<div class="content-section">
+		<div class="media">
+			<img class="rounded-circle account-img" src="{{ image_file }}">
+			<div class="media-body">
+				<h3 class="account-heading">{{ current_user.username }}</h3>
+				<p class="text-secondary">{{ current_user.email }}</p>
+			</div>
+		</div>
+		<form method="POST" action="" enctype="multipart/form-data" style="margin-bottom: 0">
+			{{form.hidden_tag() }}
+			<fieldset class="form-group" style="margin-bottom: 0.50rem">
+				<legend class="border-bottom mb-4">Account Info</legend>
+				<div class="form-group" style="margin-bottom: 0.25rem">
+					{{ form.username.label(class="form-control-label", style="margin-bottom:0") }}
+					
+					{% if form.username.errors %}
+						{{ form.username(class="form-control form-control-s is-invalid") }}
+						<div class="invalid-feedback">
+							{% for error in form.username.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.username(class="form-control form-control-s") }}
+					{% endif %}
+					
+				</div>
+				<div class="form-group" style="margin-bottom: 0.25rem">
+					{{ form.email.label(class="form-control-label", style="margin-bottom:0") }}
+					
+					{% if form.email.errors %}
+						{{ form.email(class="form-control form-control-s is-invalid") }}
+						<div class="invalid-feedback">
+							{% for error in form.email.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.email(class="form-control form-control-s") }}
+					{% endif %}
+				</div>
+				<div class="form-group" style="margin-bottom: 0.25rem">
+					{{ form.picture.label() }}
+					{{ form.picture(class="form-control-file") }}
+					{% if form.picture.errors %}
+						{% for error in form.picture.errors %}
+							<span class="text-danger">{{ error }}</span> <br/>
+						{% endfor %}
+					{% endif %}
+				</div>
+			</fieldset>
+			<div class="form-group" style="margin-bottom: 0.25rem">
+				{{ form.submit(class="btn btn-outline-info") }}
+			</div>
+		</form>	
+	</div>	
+{% endblock content %}
