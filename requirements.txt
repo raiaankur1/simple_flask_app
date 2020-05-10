@@ -1,0 +1,15 @@
+Flask
+
+itsdangerous
+
+flask-bcrypt
+
+PIL
+
+secrets
+
+Flask-Mail
+
+Flask-SQLALchemy
+
+Flask-Login
