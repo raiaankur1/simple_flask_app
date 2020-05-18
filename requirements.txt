@@ -13,3 +13,7 @@ Flask-Mail
 Flask-SQLALchemy
 
 Flask-Login
+
+Flask-WTF
+
+email-validator
